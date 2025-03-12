@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cinema Paradiso - Página principal</title>
+        <meta name="author" content="Carlos Lacave Muñoz"/>
+        <meta name="description" content="Cinema Paradiso, la mejor web de cine"/>
+        <meta name="keywords" content="cine, peliculas, estrenos, cartelera, oscar"/>
+        <link rel="stylesheet" href="./css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --light-accent: #ffffff;
+                --dark-bg: #0a0a0a;
+                --light-rgb: rgba(255, 255, 255, 0.1);
+            }
+
+            body {
+                background: var(--dark-bg);
+                color: #ffffff;
+                font-family: 'Montserrat', sans-serif;
+            }   
+
+            .navbar-custom {
+                background: rgba(10, 10, 10, 0.98) !important;
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+        
+            .nav-link {
+                color: rgba(255, 255, 255, 0.8) !important;
+                position: relative;
+                transition: all 0.3s ease;
+                font-weight: 300;
+            }
+        
+            .nav-link:hover {
+                color: var(--light-accent) !important;
+            }
+        
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 1px;
+                bottom: 0;
+                left: 0;
+                background: var(--light-accent);
+                transition: width 0.3s ease;
+            }
+        
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            .btn-outline-black {
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                color: rgba(255, 255, 255, 0.8);
+                transition: all 0.3s ease;
+            }
+        
+            .btn-outline-black:hover {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.8);
+            }
+
+            .contact-frame {
+                max-width: 800px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 15px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            }
+        
+            .info-card {
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                height: 100%;
+                transition: transform 0.3s ease;
+            }
+        
+            .info-card:hover {
+                transform: translateY(-5px);
+            }
+        
+            .email-container input:focus {
+                box-shadow: none;
+                border-color: #ffd700;
+            }
+
+            .footer-custom {
+                margin-top: 100px !important;
+                padding-top: 48px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            @media (min-width: 768px) {
+                .footer-custom {
+                    margin-top: 100px !important;
+                    margin-bottom: 48px !important;
+                }
+            }
+
+            .light-theme {
+                --light-accent: #2a2a2a;
+                --dark-bg: #ffffff;
+                --light-rgb: rgba(0, 0, 0, 0.1);
+                background: var(--dark-bg);
+                color: #2a2a2a;
+            }
+            
+            .light-theme .navbar-custom {
+                background: rgba(255, 255, 255, 0.98) !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+            }
+            
+            .light-theme .nav-link {
+                color: rgba(0, 0, 0, 0.8) !important;
+            }
+            
+            .light-theme .nav-link:hover {
+                color: var(--light-accent) !important;
+            }
+            
+            .light-theme .nav-link::after {
+                background: var(--light-accent);
+            }
+
+            .light-theme .btn-outline-black {
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                color: rgba(0, 0, 0, 0.8);
+                transition: all 0.3s ease;
+            }
+        
+            .light-theme .btn-outline-black:hover {
+                background: rgba(0, 0, 0, 0.2);
+                border-color: rgba(0, 0, 0, 0.3);
+            }
+
+            .light-theme .contact-frame {
+                background: rgba(0, 0, 0, 0.03);
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            .light-theme .email-container input {
+                background: #f8f9fa !important;
+                color: #0a0a0a !important;
+                border-color: #a3a5a7 !important;
+            }
+            
+            .light-theme .info-card {
+                background: rgba(255, 255, 255, 0.5);
+            }            
+
+            .light-theme .copiar {
+                color: rgba(0, 0, 0, 1) !important;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <div class="container py-3">
+            <header>
+                <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+                    <a href="index.html" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                        <span class="fs-4">
+                            <img src="src/cinemaParadiso.jpg" alt="Cinema Paradiso" class="img-fluid" style="max-width: 225px"/>
+                        </span>
+                    </a>
+                    <nav class="navbar navbar-expand-lg navbar-custom mt-2 mt-md-0 ms-md-auto">
+                        <div class="container">
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item mx-2">
+                                        <a class="nav-link" href="oscars.html">
+                                            <img src="src/oscars/oscars.jpg" alt="Oscars 2025" class="img-fluid" style="height: 25px"/>
+                                            Oscars 2025
+                                        </a>
+                                    </li>
+                                    <li class="nav-item mx-2">
+                                        <a class="nav-link" href="grandesExitos.html">Grandes Éxitos</a>
+                                    </li>
+                                    </li>
+                                    <li class="nav-item mx-2">
+                                        <a class="nav-link" href="acerca-de.html">Acerca de</a>
+                                    </li>
+                                    <li class="nav-item mx-2">
+                                        <button class="btn btn-outline-black py-2 px-3" type="button" id="theme-toggle" aria-label="Toggle theme">
+                                            <svg id="theme-icon" class="bi" width="24" height="24">
+                                                <use href="#moon-stars-fill"></use>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <main>
+                <div class="container py-5">
+                    <div class="contact-frame mx-auto p-4 p-md-5">
+                        <h2 class="mb-5">📧 Contacto</h2>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="info-card p-3">
+                                    <h4 class="mb-3">👤 Información Personal</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <span class="fw-bold">Nombre:</span> 
+                                            <span>Carlos Lacave Muñoz</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <span class="fw-bold">GitHub:</span> 
+                                            <a href="https://github.com/lacavec" 
+                                               target="_blank" 
+                                               class="text-warning text-decoration-none">
+                                                <i class="bi bi-github"></i> @lacavec
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-card p-3">
+                                    <h4 class="mb-3">📩 Correo Electrónico</h4>
+                                    <div class="email-container position-relative">
+                                        <input type="text" 
+                                               class="form-control bg-dark text-white border-secondary" 
+                                               id="emailInput" 
+                                               value="clacmuo@alu.upo.es" 
+                                               readonly
+                                               style="cursor: pointer">
+                                        <button class="btn btn-link position-absolute end-0 top-50 translate-middle-y" 
+                                                onclick="copyEmail()">
+                                            <i class="bi bi-clipboard text-warning"></i>
+                                        </button>
+                                    </div>
+                                    <small class="copiar text-muted mt-2 d-block">Haz clic para copiar</small>
+                                    <div id="copyFeedback" class="text-success small mt-2" style="display: none;">
+                                        ¡Correo copiado al portapapeles!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="footer-custom mt-5 mb-5">
+                <div class="container">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-4 text-center">
+                            <img src="src/cinemaParadiso.jpg" alt="Cinema Paradiso" class="img-fluid"/>
+                        </div>
+                        <div class="col-md-5">
+                            <h5 class="oscar-subtitle mb-3">Cinema Paradiso</h5>
+                            <p class="mb-0">Tu portal líder en información cinematográfica de calidad.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="oscar-subtitle mb-3">Enlaces rápidos</h5>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="acerca-de.html" class="nav-link small">Sobre nosotros</a>
+                                </li>
+                                <li>
+                                    <a href="acerca-de.html" class="nav-link small">Contacto</a>
+                                </li>
+                                <li>
+                                    <a href="acerca-de.html" class="nav-link small">Política de privacidad</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+    <script>
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            document.body.style.transition = 'all 0.3s ease';
+            document.body.classList.toggle('light-theme');
+            
+            document.querySelectorAll('.navbar-custom, .card, .accordion').forEach(element => {
+                element.style.transition = 'all 0.3s ease';
+            });
+            
+            const themeIcon = document.getElementById('theme-icon');
+            if (document.body.classList.contains('light-theme')) {
+                themeIcon.innerHTML = '<use href="#sun-fill"></use>';
+            } else {
+                themeIcon.innerHTML = '<use href="#moon-stars-fill"></use>';
+            }
+        });
+
+        function copyEmail() {
+            const email = document.getElementById('emailInput');
+            email.select();
+            document.execCommand('copy');
+            
+            const feedback = document.getElementById('copyFeedback');
+            feedback.style.display = 'block';
+            setTimeout(() => feedback.style.display = 'none', 2000);
+        }
+    
+        document.getElementById('emailInput').addEventListener('click', copyEmail);
+    </script>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+            <path d="M6 .278a.5.5 0 0 1 .5.5v1.528a.5.5 0 0 1-1 0V.778a.5.5 0 0 1 .5-.5zM2.343 2.343a.5.5 0 0 1 .707 0l1.086 1.086a.5.5 0 1 1-.707.707L2.343 3.05a.5.5 0 0 1 0-.707zm9.9 0a.5.5 0 0 1 0 .707l-1.086 1.086a.5.5 0 1 1-.707-.707l1.086-1.086a.5.5 0 0 1 .707 0zM6.5 5.5a.5.5 0 0 1 .5.5v1.528a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-4.657 2.657a.5.5 0 0 1 .707 0l1.086 1.086a.5.5 0 1 1-.707.707L2.343 8.864a.5.5 0 0 1 0-.707zm9.9 0a.5.5 0 0 1 0 .707l-1.086 1.086a.5.5 0 1 1-.707-.707l1.086-1.086a.5.5 0 0 1 .707 0zM6.5 10.5a.5.5 0 0 1 .5.5v1.528a.5.5 0 0 1-1 0V11a.5.5 0 0 1 .5-.5zm-4.657 2.657a.5.5 0 0 1 .707 0l1.086 1.086a.5.5 0 1 1-.707.707L2.343 13.864a.5.5 0 0 1 0-.707zm9.9 0a.5.5 0 0 1 0 .707l-1.086 1.086a.5.5 0 1 1-.707-.707l1.086-1.086a.5.5 0 0 1 .707 0z"/>
+        </symbol>
+        <symbol id="sun-fill" viewBox="0 0 16 16">
+            <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </symbol>
+    </svg>
+</html>

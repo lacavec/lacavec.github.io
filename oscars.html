@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" data-darkreader-mode="dynamic" data-darkreader-scheme="dark" data-darkreader-proxy-injected="true">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cinema Paradiso - Oscars 2025</title>
+        <meta name="author" content="Carlos Lacave Muñoz" />
+        <meta name="description" content="Cinema Paradiso, la mejor web de cine" />
+        <meta name="keywords" content="cine, peliculas, estrenos, cartelera, oscar" />
+        <link rel="stylesheet" href="./css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+        
+        <style>
+            :root {
+                --gold: #c9b077;
+                --dark-bg: #0a0a0a;
+                --light-gold: rgba(201, 176, 119, 0.1);
+            }
+        
+            body {
+                background: var(--dark-bg);
+                font-family: 'Montserrat', sans-serif;
+            }        
+
+            .navbar-custom {
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid var(--gold) !important;
+            }
+        
+            .nav-link {
+                color: #fff !important;
+                position: relative;
+                transition: 0.3s;
+            }
+        
+            .nav-link:hover {
+                color: var(--gold) !important;
+            }
+        
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background: var(--gold);
+                transition: 0.3s;
+            }
+        
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            .oscar-title {
+                font-family: 'Playfair Display', serif;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                background: linear-gradient(45deg, #c9b077, #ffd700, #ffffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: 0 0 15px rgba(201, 176, 119, 0.3);
+            }
+        
+            .oscar-subtitle {
+                font-family: 'Cinzel', serif;
+                color: #c9b077 !important;
+                letter-spacing: 2px;
+            }
+        
+            .oscar-line {
+                width: 100px;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #c9b077, transparent);
+            }
+        
+            .oscar-location {
+                font-family: 'Montserrat', sans-serif;
+                color: #c9b077 !important;
+            }
+        
+            .oscar-glow {
+                animation: glow 2s ease-in-out infinite alternate;
+            }
+        
+            @keyframes glow {
+                from { text-shadow: 0 0 10px #c9b077; }
+                to { text-shadow: 0 0 20px #ffd700, 0 0 10px #c9b077; }
+            }
+            .object-fit-cover {
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .card-elegant {
+                background: #121212;
+                border: 1px solid rgba(201, 176, 119, 0.3);
+                transition: 0.3s;
+                overflow: hidden;
+            }
+        
+            .card-elegant:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(201, 176, 119, 0.1);
+            }
+        
+            .card-header-elegant {
+                background: linear-gradient(45deg, #121212, #1a1a1a);
+                border-bottom: 1px solid var(--gold);
+                font-family: 'Cinzel', serif;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .accordion-header-elegant {
+                font-family: 'Cinzel', serif;
+            }
+
+            .accordion-button-elegant {
+                background: #1a1a1a !important;
+                color: var(--gold) !important;
+                font-family: 'Playfair Display', serif;
+            }
+
+            .accordion-button-elegant:focus {
+                box-shadow: 0 0 0 0.25rem rgba(201, 176, 119, 0.25) !important;
+                border-color: var(--gold) !important;
+            }
+        
+            .accordion-button-elegant::after {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23c9b077'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            }
+        
+            .accordion-button-elegant:not(.collapsed)::after {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23c9b077'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            }
+                    
+            .accordion-item {
+                border-color: rgba(201, 176, 119, 0.3) !important;
+            }
+
+            .accordion-button-elegant:focus {
+                box-shadow: 0 0 0 0.25rem rgba(201, 176, 119, 0.25) !important;
+                border-color: var(--gold) !important;
+            }
+
+            .img-container {
+                overflow: hidden;
+                position: relative;
+                min-height: 300px; /* Móviles pequeños */
+                aspect-ratio: 3/4; /* 3:4 (ajustar según necesidad) */
+            }
+        
+            .img-overlay {
+                position: relative;
+                overflow: hidden;
+            }
+        
+            .img-overlay::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(10,10,10,1) 100%);
+            }
+        
+            .progress {
+                height: 1.2rem;
+                border-radius: 4px;
+                background: #1a1a1a;
+            }
+            .progress-bar {
+                position: relative;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+            }
+
+            .oscar-details {
+                color: var(--gold);
+                padding: 1.5rem;
+                background: var(--light-gold);
+                border-radius: 8px;
+                border: 1px solid rgba(201, 176, 119, 0.2);
+            }
+            
+            .progress-container {
+                max-width: 500px;
+            }
+
+
+            .footer-custom {
+                background: #121212;
+                border-top: 1px solid var(--gold);
+                padding: 2rem 0;
+                margin-top: 4rem;
+            }
+
+            .btn-outline-gold {
+                border: 1px solid var(--gold);
+                color: var(--gold);
+                transition: all 0.3s ease;
+            }
+            
+            .btn-outline-gold:hover {
+                background: var(--gold);
+                color: var(--dark-bg);
+            }
+            
+            #theme-icon {
+                transition: transform 0.3s ease;
+            }
+            
+            .btn:hover #theme-icon {
+                transform: rotate(15deg);
+            }
+
+            .footer-custom {
+                margin-top: 100px !important;
+                padding-top: 48px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            @media (max-width: 768px) {
+                .img-container {
+                    height: 300px !important;
+                }
+                
+                .oscar-details {
+                    margin-top: 1.5rem;
+                }
+
+                .footer-custom {
+                    margin-top: 100px !important;
+                    margin-bottom: 48px;
+                }
+            }
+            
+            .light-theme {
+                --light-accent: #2a2a2a;
+                --dark-bg: #ffffff;
+                --light-rgb: rgba(0, 0, 0, 0.1);
+                background: var(--dark-bg);
+                color: #2a2a2a;
+            }
+
+            .light-theme .navbar-custom {
+                background: rgba(255, 255, 255, 0.98) !important;
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid var(--gold) !important;
+            }
+            
+            .light-theme .nav-link {
+                color: rgba(0, 0, 0, 0.8) !important;
+            }
+            
+            .light-theme .nav-link:hover {
+                color: var(--light-accent) !important;
+            }
+            
+            .light-theme .nav-link::after {
+                background: var(--light-accent);
+            }
+
+            .light-theme .progress {
+                background: #e9ecef;
+            }
+
+            .light-theme h2 {
+                color: #2a2a2a !important;
+            }
+            
+            .light-theme .p-custom {
+                color: #2a2a2a !important;
+            }
+
+            .light-theme .footer-custom {
+                background: #ffffff;
+                border-top: 1px solid var(--gold);
+                padding: 2rem 0;
+                margin-top: 4rem;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <div class="container py-3">
+            <header>
+                <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+                    <a href="index.html" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                        <span class="fs-4">
+                            <img src="src/cinemaParadiso.jpg" alt="Cinema Paradiso" class="img-fluid" style="max-width: 225px"/>
+                        </span>
+                    </a>
+                    <nav class="navbar navbar-expand-lg navbar-custom mt-2 mt-md-0 ms-md-auto">
+                        <div class="container">
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item mx-2">
+                                        <a class="nav-link" href="oscars.html">
+                                                <img src="src/oscars/oscars.jpg" alt="Oscars 2025" class="img-fluid" style="height: 25px"/>
+                                                Oscars 2025
+                                        </a>
+                                    </li>
+                                    <li class="nav-item mx-2">
+                                        <a class="nav-link" href="grandesExitos.html">Grandes Éxitos</a>
+                                    </li>
+                                    <li class="nav-item mx-2">
+                                        <a class="nav-link" href="acerca-de.html">Acerca de</a>
+                                    </li>
+                                    <li class="nav-item mx-2">
+                                        <button class="btn btn-outline-gold py-2 px-3" type="button" id="theme-toggle" aria-label="Toggle theme">
+                                            <svg id="theme-icon" class="bi" width="24" height="24">
+                                                <use href="#moon-stars-fill"></use>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <main>
+                <div class="introduccion-header p-3 pb-md-4 mx-auto text-center">
+                    <div class="oscars mb-4">
+                        <img src="src/oscars/oscars.jpg" alt="Oscars 2025" class="img-fluid" style="height: 80px"/>
+                    </div>
+                    <h1 class="display-3 fw-bold oscar-title">
+                        <span class="oscar-glow">Gala de los Oscars</span>
+                    </h1>
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <div class="oscar-line"></div>
+                        <p class="lead mb-0 mx-3 oscar-subtitle">96º Premios de la Academia - Edición 2025</p>
+                        <div class="oscar-line"></div>
+                    </div>
+                    <p class="fs-5 text-body-secondary oscar-location">
+                        <i class="bi bi-geo-alt-fill me-2"></i>Teatro Dolby, Los Ángeles
+                        <span class="mx-3">|</span>
+                        <i class="bi bi-calendar-event-fill me-2"></i>3 de marzo
+                    </p>
+                </div>
+                <div class="container py-5 mt-5">
+                    <div class="row row-cols-1 row-cols-md-3 g-5">
+                        <div class="col">
+                            <div class="card card-elegant">
+                                <div class="card-header card-header-elegant">
+                                    <h3 class="card-title text-center mt-2">Mejor Película</h3>
+                                </div>
+                                <div class="img-container" style="overflow: hidden;">
+                                    <img src="src/oscars/anora.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Anora"/>
+                                </div>
+                                <div class="card-header-elegant">
+                                    <h5 class="card-body">Anora (Sean Baker)</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card card-elegant">
+                                <div class="card-header card-header-elegant">
+                                    <h3 class="card-title text-center mt-2">Mejor Actor</h3>
+                                </div>
+                                <div class="img-container" style="overflow: hidden;">
+                                    <img src="src/oscars/adrien-brody.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Adrien Brody" />
+                                </div>
+                                <div class="card-header-elegant">
+                                    <h5 class="card-body">Adrien Brody (The Brutalist)</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card card-elegant">
+                                <div class="card-header card-header-elegant">
+                                    <h3 class="card-title text-center mt-2">Mejor Actriz</h3>
+                                </div>
+                                <div class="img-container" style="overflow: hidden;">
+                                    <img src="src/oscars/mikey-madison.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Mickey Madison" />
+                                </div>
+                                <div class="card-header-elegant">
+                                    <h5 class="card-body">Mikey Madison (Anora)</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card card-elegant">
+                                <div class="card-header card-header-elegant">
+                                    <h3 class="card-title text-center mt-2">Mejor Director</h3>
+                                </div>
+                                <div class="img-container" style="overflow: hidden;">
+                                    <img src="src/oscars/sean-baker.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Sean Baker" />
+                                </div>
+                                <div class="card-header-elegant">
+                                    <h5 class="card-body">Sean Baker (Anora)</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card card-elegant">
+                                <div class="card-header card-header-elegant">
+                                    <h5 class="card-title text-center mt-3 mb-2">Mejor Película Extranjera</h5>
+                                </div>
+                                <div class="img-container" style="overflow: hidden;">
+                                    <img src="src/oscars/aun-estoy-aqui.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Aún estoy aquí" />
+                                </div>
+                                <div class="card-header-elegant">
+                                    <h5 class="card-body">Aún estoy aquí (Brasil)</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card card-elegant">
+                                <div class="card-header card-header-elegant">
+                                    <h5 class="card-title text-center mt-3 mb-2">Mejor Película de Animación</h4>
+                                </div>
+                                <div class="img-container" style="overflow: hidden;">
+                                    <img src="src/oscars/flow.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Flow" />
+                                </div>
+                                <div class="card-header-elegant">
+                                    <h5 class="card-body">Flow (Letonia)</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container py-5 mt-5">
+                    <div class="accordion-header accordion-header-elegant p-3 pb-md-4 mx-auto text-center">
+                        <h2 class="display-6 fw-normal text-body-emphasis">Nominadas a mejor película</h2>
+                        <p class="p-custom fs-5 text-body-secondary">Por orden alfabético</p>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion" id="mejorPeliculaAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="peliculaUno">
+                                    <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <span class="d-flex align-items-center">
+                                            <span class="oscar-subtitle">Anora</span>
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#mejorPeliculaAccordion">
+                                    <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                        <div class="d-flex">
+                                            <div class="col-md-10 card card-elegant h-100 mb-4 me-4">
+                                                <div class="img-container" style="height: 800px; overflow: hidden;">
+                                                    <img src="src/oscars/anora.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Anora" />
+                                                </div>
+                                                <div class="card-header-elegant text-center">
+                                                    <h5 class="mt-2 mb-2">Anora</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="badge bg-success mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película ganadora del Oscar 2025">Ganadora</span>
+                                                <div class="oscar-details">
+                                                    <p><strong>Sinopsis: </strong>Anora, una joven prostituta de Brooklyn, tiene la oportunidad de vivir una historia a lo Cenicienta cuando conoce al hijo de un oligarca ruso e impulsivamente se casa con él. Cuando la noticia llega a Rusia, su cuento de hadas se ve amenazado, ya que los padres parten hacia Nueva York para intentar conseguir la anulación del matrimonio.</p>
+                                                    <p><strong>Director: </strong>Sean Baker</p>
+                                                    <p><strong>Guión: </strong>Sean Baker</p>
+                                                    <p><strong>Reparto: </strong>Mikey Madison, Mark Eydelshteyn, Yuriy Borisov</p>
+                                                    <p><strong>Género: </strong>Drama, comedia</p>
+                                                    <p><strong>Duración: </strong>138 minutos</p>
+                                                    <div class="progress-container">
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Crítica: </strong>93%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-success" style="width: 93%"></div>
+                                                           </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Público: </strong>86%</p>
+                                                                <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 86%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="peliculaDos">
+                                <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <span class="d-flex align-items-center">
+                                        <span class="oscar-subtitle">Aún Estoy Aquí</span>
+                                    </span>
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#mejorPeliculaAccordion">
+                                <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                    <div class="d-flex">
+                                        <div class="col-md-10 card card-elegant h-100 mb-4 me-4">
+                                            <div class="img-container" style="height: 800px; overflow: hidden;">
+                                                <img src="src/oscars/aun-estoy-aqui.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Aún Estoy Aquí" />
+                                            </div>
+                                            <div class="card-header-elegant text-center">
+                                                <h5 class="mt-2 mb-2">Aún Estoy Aquí</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="badge bg-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película nominada al Oscar 2025">Nominada</span>
+                                            <div class="oscar-details">
+                                                <p><strong>Sinopsis: </strong>Basada en las memorias de Marcelo Rubens Paiva, en las que narra cómo su madre se vio obligada al activismo político cuando su marido, el diputado izquierdista Rubens Paiva, fue capturado por el gobierno durante la dictadura militar de Brasil, en 1971.</p>
+                                                <p><strong>Director: </strong>Walter Salles</p>
+                                                <p><strong>Guión: </strong>Murilo Hauser, Heitor Lorega</p>
+                                                <p><strong>Libro: </strong>Marcelo Rubens Paiva</p>
+                                                <p><strong>Reparto: </strong>Fernanda Torres, Selton Mello, Fernanda Montenegro</p>
+                                                <p><strong>Género: </strong>Drama, política, biografía</p>
+                                                <p><strong>Duración: </strong>137 minutos</p>
+                                                <div class="mb-3">
+                                                    <p class="mb-1"><strong>Crítica: </strong>97%</p>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 97%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="mb-1"><strong>Público: </strong>97%</p>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 97%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="peliculaTres">
+                                <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <span class="d-flex align-items-center">
+                                        <span class="oscar-subtitle">Cónclave</span>
+                                    </span>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#mejorPeliculaAccordion">
+                                <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                    <div class="d-flex">
+                                        <div class="col-md-10 card card-elegant h-100 mb-4 me-4">
+                                            <div class="img-container" style="height: 800px; overflow: hidden;">
+                                                <img src="src/oscars/conclave.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Cónclave" />
+                                            </div>
+                                            <div class="card-header-elegant text-center">
+                                                <h5 class="mt-2 mb-2">Cónclave</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="badge bg-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película nominada al Oscar 2025">Nominada</span>
+                                            <div class="oscar-details">
+                                                <p><strong>Sinopsis: </strong>Tras la inesperada muerte del Sumo Pontífice, el cardenal Lawrence es designado como responsable para liderar uno de los rituales más secretos y antiguos del mundo: la elección de un nuevo Papa. Cuando los líderes más poderosos de la Iglesia Católica se reúnen en los salones del Vaticano, Lawrence se ve atrapado dentro de una compleja conspiración a la vez que descubre un secreto que podría sacudir los cimientos de la Iglesia.</p>
+                                                <p><strong>Director: </strong>Edward Berger</p>
+                                                <p><strong>Guión: </strong>Peter Straughan</p>
+                                                <p><strong>Novela: </strong>Robert Harris</p>
+                                                <p><strong>Reparto: </strong>Ralph Fiennes, Stanley Tucci, John Lithgow, Isabella Rossellini</p>
+                                                <p><strong>Género: </strong>Drama, thriller</p>
+                                                <p><strong>Duración: </strong>115 minutos</p>
+                                                <div class="progress-container">
+                                                    <div class="mb-3">
+                                                        <p class="mb-1"><strong>Crítica: </strong>93%</p>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-success" role="progressbar" style="width: 93%"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <p class="mb-1"><strong>Público: </strong>86%</p>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 86%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="peliculaCuatro">
+                                <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <span class="d-flex align-items-center">
+                                        <span class="oscar-subtitle">Dune: Parte Dos</span>
+                                    </span>
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#mejorPeliculaAccordion">
+                                <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                    <div class="d-flex">
+                                        <div class="col-md-10 card card-elegant h-100 mb-4 me-4">
+                                            <div class="img-container" style="height: 800px; overflow: hidden;">
+                                                <img src="src/oscars/dune-2.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Dune: Parte Dos" />
+                                            </div>
+                                            <div class="card-header-elegant text-center">
+                                                <h5 class="mt-2 mb-2">Dune: Parte Dos</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="badge bg-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película nominada al Oscar 2025">Nominada</span>
+                                            <div class="oscar-details">
+                                                <p><strong>Sinopsis: </strong>Tras los sucesos de la primera parte acontecidos en el planeta Arrakis, el joven Paul Atreides se une a la tribu de los Fremen y comienza un viaje espiritual y marcial para convertirse en mesías, mientras intenta evitar el horrible pero inevitable futuro que ha presenciado: una Guerra Santa en su nombre, que se extiende por todo el universo conocido... Secuela de 'Dune' (2021).</p>
+                                                <p><strong>Director: </strong>Denis Villeneuve</p>
+                                                <p><strong>Guión: </strong>Denis Villeneuve, Jon Spaihts</p>
+                                                <p><strong>Novela: </strong>Frank Herbert</p>
+                                                <p><strong>Reparto: </strong>Timothée Chalamet, Zendaya, Javier Bardem, Austin Butler</p>
+                                                <p><strong>Género: </strong>Ciencia ficción, aventuras, acción</p>
+                                                <p><strong>Duración: </strong>166 minutos</p>
+                                                <div class="progress-container">
+                                                    <div class="mb-3">
+                                                        <p class="mb-1"><strong>Crítica: </strong>92%</p>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-success" style="width: 92%"></div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <p class="mb-1"><strong>Público: </strong>95%</p>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-success" role="progressbar" style="width: 95%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                                <h2 class="accordion-header" id="peliculaCinco">
+                                    <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        <span class="d-flex align-items-center">
+                                            <span class="oscar-subtitle">Emilia Pérez</span>
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#mejorPeliculaAccordion">
+                                    <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                        <div class="d-flex">
+                                            <div class="col-md-10 card card-elegant h-100 mb-4 me-4">
+                                                <div class="img-container" style="height: 700px; overflow: hidden;">
+                                                    <img src="src/oscars/emilia-perez.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Emilia Pérez" />
+                                                </div>
+                                                <div class="card-header-elegant text-center">
+                                                    <h5 class="mt-2 mb-2">Emilia Pérez</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="badge bg-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película nominada al Oscar 2025">Nominada</span>
+                                                <div class="oscar-details">
+                                                    <p><strong>Sinopsis: </strong>Sobrecualificada e infravalorada, Rita es una abogada de un gran bufete que un día recibe una oferta inesperada: ayudar al temido jefe de un cartel a retirarse de su negocio y desaparecer para siempre convirtiéndose en la mujer que él siempre ha soñado ser.</p>
+                                                    <p><strong>Director: </strong>Jacques Audiard</p>
+                                                    <p><strong>Guión: </strong>Jacques Audiard</p>
+                                                    <p><strong>Novela: </strong>Boris Razon</p>
+                                                    <p><strong>Reparto: </strong>Karla Sofía Gascón, Zoe Saldaña, Selena Gómez</p>
+                                                    <p><strong>Género: </strong>Thriller, musical, drama</p>
+                                                    <p><strong>Duración: </strong>132 minutos</p>
+                                                    <div class="progress-container">
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Crítica: </strong>72%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 72%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Público: </strong>16%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 16%"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="peliculaSeis">
+                                    <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                        <span class="d-flex align-items-center">
+                                            <span class="oscar-subtitle">La Sustancia</span>
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#mejorPeliculaAccordion">
+                                    <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                        <div class="d-flex">
+                                            <div class="col-md-10 card card-elegant h-100 mb-4 me-4">
+                                                <div class="img-container" style="height: 800px; overflow: hidden;">
+                                                    <img src="src/oscars/la-sustancia.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="La Sustancia" />
+                                                </div>
+                                                <div class="card-header-elegant text-center">
+                                                    <h5 class="mt-2 mb-2">La Sustancia</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="badge bg-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película nominada al Oscar 2025">Nominada</span>
+                                                <p><strong>Sinopsis: </strong>'Tú, pero mejor en todos los sentidos'. Esta es la promesa, un producto revolucionario basado en la división celular, que crea un alter ego más joven, más bello, más perfecto. Tentada por la oportunidad Elisabeth Sparkle, una celebridad en decadencia, consume este suero del mercado negro creando una versión rejuvenecida de sí misma, Sue, con efectos tan inesperados como aterradores.</p>
+                                                <p><strong>Director: </strong>Coralie Fargeat</p>
+                                                <p><strong>Guión: </strong>Coralie Fargeat</p>
+                                                <p><strong>Reparto: </strong>Demi Moore, Margaret Qualley, Dennis Quaid</p>
+                                                <p><strong>Género: </strong>Terror, thriller, ciencia ficción</p>
+                                                <p><strong>Duración: </strong>140 minutos</p>
+                                                <div class="progress-container">
+                                                    <div class="mb-3">
+                                                        <p class="mb-1"><strong>Crítica: </strong>89%</p>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 89%"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <p class="mb-1"><strong>Público: </strong>75%</p>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="peliculaSiete">
+                                    <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                        <span class="d-flex align-items-center">
+                                            <span class="oscar-subtitle">Nickel Boys</span>
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#mejorPeliculaAccordion">
+                                    <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                        <div class="d-flex">
+                                            <div class="col-md-10 card card-elegant h-100 mb-4 me-4">
+                                                <div class="img-container" style="height: 800px; overflow: hidden;">
+                                                    <img src="src/oscars/nickel-boys.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Nickel Boys" />
+                                                </div>
+                                                <div class="card-header-elegant text-center">
+                                                    <h5 class="mt-2 mb-2">Nickel Boys</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="badge bg-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película nominada al Oscar 2025">Nominada</span>
+                                                <div class="oscar-details">
+                                                    <p><strong>Sinopsis: </strong>Narra la poderosa amistad entre dos jóvenes afroamericanos que atraviesan juntos las duras pruebas de un reformatorio de Florida. Basada en una novela ganadora del Premio Pulitzer.</p>
+                                                    <p><strong>Director: </strong>RaMell Ross</p>
+                                                    <p><strong>Guión: </strong>RaMell Ross, Joslyn Barnes</p>
+                                                    <p><strong>Libro: </strong>Colson Whitehead</p>
+                                                    <p><strong>Reparto: </strong>Ethan Herisse, Brandon Wilson, Aunjanue Ellis-Taylor</p>
+                                                    <p><strong>Género: </strong>Drama, amistad</p>
+                                                    <p><strong>Duración: </strong>140 minutos</p>
+                                                    <div class="progress-container">
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Crítica: </strong>91%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 91%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Público: </strong>75%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="peliculaOcho">
+                                    <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                        <span class="d-flex align-items-center">
+                                            <span class="oscar-subtitle">The Brutalist</span>
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#mejorPeliculaAccordion">
+                                    <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                        <div class="d-flex">
+                                            <div class="col-md-10 card card-elegant h-100 mb-4 me-4">
+                                                <div class="img-container" style="height: 800px; overflow: hidden;">
+                                                    <img src="src/oscars/brutalist.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="The Brutalist" />
+                                                </div>
+                                                <div class="card card-header-elegant text-center">
+                                                    <h5 class="mt-2 mb-2">The Brutalist</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="badge bg-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película nominada al Oscar 2025">Nominada</span>
+                                                <div class="oscar-details">
+                                                    <p><strong>Sinopsis: </strong>Huyendo de la Europa de la posguerra, el visionario arquitecto László Toth llega a Estados Unidos para reconstruir su vida, su obra y su matrimonio con su esposa Erzsébet tras verse obligados a separarse durante la guerra a causa de los cambios de fronteras y regímenes. Solo y en un nuevo país totalmente desconocido para él, László se establece en Pensilvania, donde el adinerado y prominente empresario industrial Harrison Lee Van Buren reconoce su talento para la arquitectura. Pero amasar poder y forjarse un legado tiene su precio...</p>
+                                                    <p><strong>Director: </strong>Brady Corbet</p>
+                                                    <p><strong>Guión: </strong>Brady Corbet, Mona Fastvold</p>
+                                                    <p><strong>Reparto: </strong>Adrien Brody, Felicity Jones, Guy Pearce, Raffey Cassidy</p>
+                                                    <p><strong>Género: </strong>Drama, arquitectura, inmigración</p>
+                                                    <p><strong>Duración: </strong>215 minutos</p>
+                                                    <div class="progress-container">
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Crítica: </strong>93%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 93%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Público: </strong>80%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 80%"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="peliculaNueve">
+                                    <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                        <span class="d-flex align-items-center">
+                                            <span class="oscar-subtitle">Un Completo Desconocido</span>
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#mejorPeliculaAccordion">
+                                    <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                        <div class="d-flex">
+                                            <div class="col-md-10 card card-elegant h-100 mb-4 me-4">
+                                                <div class="img-container" style="height: 700px; overflow: hidden;">
+                                                    <img src="src/oscars/un-completo-desconocido.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Un Completo Desconocido" />
+                                                </div>
+                                                <div class="card-header-elegant text-center">
+                                                    <h5 class="mt-2 mb-2">Un Completo Desconocido</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="badge bg-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película nominada al Oscar 2025">Nominada</span>
+                                                <div class="oscar-details">
+                                                    <p><strong>Sinopsis: </strong>Ambientada en la influyente escena musical de Nueva York de principios de los años 60, 'A Complete Unknown' cuenta la historia del meteórico ascenso del músico de Minnesota Bob Dylan, un cantante de folk de 19 años, hasta las salas de conciertos y lo más alto de las listas de éxitos. Las canciones y la mística de Dylan, de nombre Robert Allen Zimmerman, se convirtieron en un fenómeno mundial que culminó en 1965 con su transgresora actuación de rock eléctrico en el Newport Folk Festival.</p>
+                                                    <p><strong>Director: </strong>James Mangold</p>
+                                                    <p><strong>Guión: </strong>Jay Cooks, James Mangold</p>
+                                                    <p><strong>Libro: </strong>Elijah Wald</p>
+                                                    <p><strong>Reparto: </strong>Thimotée Chalamet, Edward Norton, Elle Fanning</p>
+                                                    <p><strong>Género: </strong>Drama, biográfico, música</p>
+                                                    <p><strong>Duración: </strong>141 minutos</p>
+                                                    <div class="progress-container">
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Crítica: </strong>82%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 82%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Público: </strong>95%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 95%"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="peliculaDiez">
+                                    <button class="accordion-button accordion-button-elegant collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                        <span class="d-flex align-items-center">
+                                            <span class="oscar-subtitle">Wicked</span>
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#mejorPeliculaAccordion">
+                                    <div class="accordion-body row-cols-1 row-cols-md-2 g-4">
+                                        <div class="d-flex">
+                                            <div class="col-md-10 card mb-4 me-4 card-elegant h-100">
+                                                <div class="img-container" style="height: 700px; overflow: hidden;">
+                                                    <img src="src/oscars/wicked.jpg" class="card-img-top h-100 object-fit-cover img-fluid" alt="Wicked" />
+                                                </div>
+                                                <div class="card-header-elegant text-center">
+                                                    <h5 class="mt-2 mb-2">Wicked</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="badge bg-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Película nominada al Oscar 2025">Nominada</span>
+                                                <div class="oscar-details">
+                                                    <p><strong>Sinopsis: </strong>Ambientada en la Tierra de Oz, mucho antes de la llegada de Dorothy Gale desde Kansas. Elphaba es una joven incomprendida por su inusual color verde que aún no ha descubierto su verdadero poder. Glinda es una popular joven marcada por sus privilegios y su ambición que aún no ha descubierto su verdadera pasión. Las dos se conocen como estudiantes de la Universidad Shiz, en la fantástica Tierra de Oz, y forjan una insólita pero profunda amistad. La trama abarca los acontecimientos del primer acto del musical de Broadway.</p>
+                                                    <p><strong>Director: </strong>Jon M. Chu</p>
+                                                    <p><strong>Guión: </strong>Winnie Holzman, Dana Fox</p>
+                                                    <p><strong>Musical: </strong>Winnie Holzman, Stephen Schwartz</p>
+                                                    <p><strong>Novela: </strong>Gregory Maguire</p>
+                                                    <p><strong>Personaje: </strong>L. Frank Baum</p>
+                                                    <p><strong>Reparto: </strong>Cynthia Erivo, Ariana Grande, Jonathan Bailey</p>
+                                                    <p><strong>Género: </strong>Musical, fantástico</p>
+                                                    <p><strong>Duración: </strong>160 minutos</p>
+                                                    <div class="progress-container">
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Crítica: </strong>88%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 88%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <p class="mb-1"><strong>Público: </strong>95%</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 95%"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="footer-custom mt-5 mb-3">
+                <div class="container">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-4 text-center">
+                            <img src="src/cinemaParadiso.jpg" alt="Cinema Paradiso" class="img-fluid"/>
+                        </div>
+                        <div class="col-md-5">
+                            <h5 class="oscar-subtitle mb-3">Cinema Paradiso</h5>
+                            <p class="mb-0">Tu portal líder en información cinematográfica de calidad.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="oscar-subtitle mb-3">Enlaces rápidos</h5>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="acerca-de.html" class="nav-link small">Sobre nosotros</a>
+                                </li>
+                                <li>
+                                    <a href="acerca-de.html" class="nav-link small">Contacto</a>
+                                </li>
+                                <li>
+                                    <a href="acerca-de.html" class="nav-link small">Política de privacidad</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+    <script>
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            document.body.style.transition = 'all 0.3s ease';
+            document.body.classList.toggle('light-theme');
+            
+            document.querySelectorAll('.navbar-custom, .card, .accordion').forEach(element => {
+                element.style.transition = 'all 0.3s ease';
+            });
+            
+            const themeIcon = document.getElementById('theme-icon');
+            if (document.body.classList.contains('light-theme')) {
+                themeIcon.innerHTML = '<use href="#sun-fill"></use>';
+            } else {
+                themeIcon.innerHTML = '<use href="#moon-stars-fill"></use>';
+            }
+        });
+    </script>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+            <path d="M6 .278a.5.5 0 0 1 .5.5v1.528a.5.5 0 0 1-1 0V.778a.5.5 0 0 1 .5-.5zM2.343 2.343a.5.5 0 0 1 .707 0l1.086 1.086a.5.5 0 1 1-.707.707L2.343 3.05a.5.5 0 0 1 0-.707zm9.9 0a.5.5 0 0 1 0 .707l-1.086 1.086a.5.5 0 1 1-.707-.707l1.086-1.086a.5.5 0 0 1 .707 0zM6.5 5.5a.5.5 0 0 1 .5.5v1.528a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-4.657 2.657a.5.5 0 0 1 .707 0l1.086 1.086a.5.5 0 1 1-.707.707L2.343 8.864a.5.5 0 0 1 0-.707zm9.9 0a.5.5 0 0 1 0 .707l-1.086 1.086a.5.5 0 1 1-.707-.707l1.086-1.086a.5.5 0 0 1 .707 0zM6.5 10.5a.5.5 0 0 1 .5.5v1.528a.5.5 0 0 1-1 0V11a.5.5 0 0 1 .5-.5zm-4.657 2.657a.5.5 0 0 1 .707 0l1.086 1.086a.5.5 0 1 1-.707.707L2.343 13.864a.5.5 0 0 1 0-.707zm9.9 0a.5.5 0 0 1 0 .707l-1.086 1.086a.5.5 0 1 1-.707-.707l1.086-1.086a.5.5 0 0 1 .707 0z"/>
+        </symbol>
+        <symbol id="sun-fill" viewBox="0 0 16 16">
+            <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </symbol>
+    </svg>
+</html>
